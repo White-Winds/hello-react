@@ -29,13 +29,21 @@ export default class App extends Component {
         })
         this.setState({ todos: newTodos });
     }
-    changeAllTodo = (done)=>{
+    deleteTodo = (id) => {
         const { todos } = this.state;
-        const newTodos = todos.map((todosObj)=>{
-            
-            return{...todosObj,done: done}
+        const newTodos = todos.filter((todoObj) => {
+            return todoObj.id !== id
         })
-        console.log(newTodos,'done');
+        this.setState({ todos: newTodos })
+    }
+
+    checkAllTodo = (done) => {
+        const { todos } = this.state;
+        const newTodos = todos.map((todosObj) => {
+
+            return { ...todosObj, done: done}
+        })
+        // console.log(newTodos,'done');
         this.setState({ todos: newTodos });
     }
 
@@ -45,8 +53,8 @@ export default class App extends Component {
             <div className="todo-container">
                 <div className="todo-wrap">
                     <Header addTodos={this.addTodos} />
-                    <List todos={todos} changeTodo={this.changeTodo} changeAllTodo={this.changeAllTodo} />
-                    <Footer changeAllTodo={this.changeAllTodo}/>
+                    <List todos={todos} changeTodo={this.changeTodo} deleteTodo={this.deleteTodo} />
+                    <Footer todos={todos} {...todos} checkAllTodo={this.checkAllTodo} />
                 </div>
             </div>
         )
