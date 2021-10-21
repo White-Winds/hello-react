@@ -5,7 +5,7 @@ import PubSub from 'pubsub-js'
 export default class Search extends Component {
 
     search = () => {
-        var my_test = '123'
+        var my_test = '123456'
         // console.log(search);
         PubSub.publish(my_test, { isFirst: false, isLoading: true, })
         const { keyWordElement: { value: search_value } } = this;

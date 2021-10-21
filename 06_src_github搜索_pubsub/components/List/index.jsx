@@ -10,7 +10,7 @@ export default class List extends Component {
 
     }
     componentDidMount(){
-        var my_test='123'
+        var my_test='123456'
         // console.log(12356115);
         this.my_pubsub = PubSub.subscribe(my_test,(msg,stateObj)=>{
             this.setState(stateObj)
